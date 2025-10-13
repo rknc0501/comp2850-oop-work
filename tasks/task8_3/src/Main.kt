@@ -11,15 +11,15 @@ fun main()
     var lowest = dataset[0]
     for (find in dataset)
     {
-        if (find.second > dataset.second)
+        if (find.second > lowest.second)
         {
             lowest = find
         }
     }
     //or
-    var lowest2 = dataset.minBy{it.second} 
+    var lowest2 = dataset.minBy { it.second } 
 
     //   - Compute average temperature
-    var avg = averageTemp()
+    var avg = averageTemp(dataset)
     //   - Display all of these statistics
 }
