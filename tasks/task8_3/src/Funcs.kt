@@ -1,9 +1,19 @@
-// Task 8.3: functions for temperature analysis
+// Task 8.3: functions for temperature analysis 
 
 typealias Record = Pair<String,Double>
 
-fun fetchData(): List<Record> {
+fun fetchData(): List<Record> 
+{
+  var dataset = listOf<Record>(     
+        "StationA" to 18.4,
+        "StationB" to 21.9,
+        "StationC" to 16.2,
+        "StationD" to 23.7,
+        "StationE" to 19.8) 
   // Create and return a simulated dataset here
+  
+
+  return dataset 
   // Use the listOf() and to() functions to create the dataset
 }
 
