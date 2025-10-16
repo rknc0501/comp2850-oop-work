@@ -1,10 +1,11 @@
 // Task 8.3: weather station temperature analysis program
 
+
 fun main() 
 {
     // Add code here to:
     //   - Fetch data
-    val dataset = fetchData()
+    var dataset = fetchData()
 
     //   - Find records with lowest and highest temperatures
     // Lowest 
@@ -17,9 +18,12 @@ fun main()
         }
     }
     //or
-    var lowest2 = dataset.minBy { it.second } 
+    var highest = dataset.maxBy { it.second } 
 
     //   - Compute average temperature
     var avg = averageTemp(dataset)
-    //   - Display all of these statistics
+
+    //   - Display all of these statistics 
+    
+     
 }
