@@ -3,7 +3,8 @@
 fun main() {
     val numbers = listOf(1, 4, 7, 2, 9, 3, 8)
 
-    val result = numbers   // make changes here
-
+    val result = numbers.sorted()   // make changes here
+    val results = numbers.asSequence()
     println(result)
+    println(results)
 }

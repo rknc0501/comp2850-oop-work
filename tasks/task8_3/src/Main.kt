@@ -12,7 +12,7 @@ fun main()
     var lowest = dataset[0]
     for (find in dataset)
     {
-        if (find.second > lowest.second)
+        if (find.second  < lowest.second)
         {
             lowest = find
         }
@@ -23,7 +23,9 @@ fun main()
     //   - Compute average temperature
     var avg = averageTemp(dataset)
 
-    //   - Display all of these statistics 
-    
-     
+    //   - Display all of these statistics
+    println("Loweest temperature $lowest")
+    println("highest temperature $highest")
+    println("average temperature $avg")
+ 
 }

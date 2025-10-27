@@ -1,5 +1,4 @@
 // Benchmarking program showing the impact of sequences on performance
-
 import java.io.File
 import kotlin.system.exitProcess
 import kotlin.time.measureTime
