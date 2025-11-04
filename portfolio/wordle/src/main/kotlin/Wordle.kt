@@ -36,6 +36,19 @@ fun pickRandomWord(words: MutableList<String>): String
      return selected_word
 }
 
+fun obtainGuess(attempt: Int): String
+{
+    println("Attempt ${attempt}")
+    var User_input = readln()
+    while(isValid(User_input)==false)
+    {
+        println("Error!!! input word cannot contains number or symbol")
+        println("Attempt ${attempt}")
+        User_input = readln()
+    }
+    return User_input
+}
+
 fun evaluateGuess(guess: String, target: String): List<Int>
 {
     
