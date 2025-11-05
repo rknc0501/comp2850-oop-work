@@ -4,71 +4,147 @@ import kotlin.random.Random
 
 fun isValid(word: String): Boolean
 {
-    if(word.length == 5 && word.all{it.isLetter()})
-    {
-        return true
-    }
-    else
-    {
-        return false
-    }
+    return word.length == 5 && word.all{it.isLetter()}
 }
 
 fun readWordList(filename: String): MutableList<String>
 {
     try
     {
-        val word_set : MutableList<String> = File(filename).readLines().toMutableList()
-        return word_set
+        val wordSet : MutableList<String> = File(filename).readLines().toMutableList()
+        return wordSet
     }
-    catch (e: FileNotFoundException)
+    catch (_: FileNotFoundException)
     {
-        println("Error! ${filename} not found.")
+        println("Error! $filename not found.")
         return mutableListOf()
     }
+    catch (_: IllegalArgumentException)
+    {
+        println("Error! $filename not found.")
+        return mutableListOf()
+    }
+
 }
 
 
 fun pickRandomWord(words: MutableList<String>): String
 {
-    var Random_num = Random.nextInt(0,words.size)
-    val selected_word = words[Random_num]
-    return selected_word
+    val randomNum = Random.nextInt(0,words.size)
+    val selectedWord = words[randomNum]
+    return selectedWord
 }
 
 fun obtainGuess(attempt: Int): String
 {
-    println("Attempt ${attempt}")
-    var User_input = readln()
-    while(isValid(User_input)==false)
+    println("Attempt $attempt")
+    var userInput = readln()
+    while(!isValid(userInput))
     {
         println("Error!!! input word cannot contains number or symbol")
-        println("Attempt ${attempt}")
-        User_input = readln()
+        println("Attempt $attempt")
+        userInput = readln()
     }
-    return User_input
+    return userInput
 }
 
 fun evaluateGuess(guess: String, target: String): List<Int>
 {
     guess.uppercase()
     target.uppercase()
-    val output_result = mutableListOf<Int>(0,0,0,0,0)
+    val outputResult = mutableListOf(0,0,0,0,0)
     var character = 0
     while (character < 5)
     {
         if (target.contains(guess.uppercase()[character]))
         {
-            output_result[character] = 1
+            outputResult[character] = 1
             if (guess.uppercase()[character] == target[character] )
             {
-                output_result[character] = 2
+                outputResult[character] = 2
             }
         }
 
         character++
     }
-    return output_result
+    return outputResult
+}
+
+fun displayGuess(guess: String, matches: List<Int>)
+{
+    val guessing = guess.uppercase()
+    println("[${guessing[0]}, ${guessing[1]}, ${guessing[2]}, ${guessing[3]}, ${guessing[4]}]")
+    println(matches)
+}import java.io.File
+import java.io.FileNotFoundException
+import kotlin.random.Random
+
+fun isValid(word: String): Boolean
+{
+    return word.length == 5 && word.all{it.isLetter()}
+}
+
+fun readWordList(filename: String): MutableList<String>
+{
+    try
+    {
+        val wordSet : MutableList<String> = File(filename).readLines().toMutableList()
+        return wordSet
+    }
+    catch (_: FileNotFoundException)
+    {
+        println("Error! $filename not found.")
+        return mutableListOf()
+    }
+    catch (_: IllegalArgumentException)
+    {
+        println("Error! $filename not found.")
+        return mutableListOf()
+    }
+
+}
+
+
+fun pickRandomWord(words: MutableList<String>): String
+{
+    val randomNum = Random.nextInt(0,words.size)
+    val selectedWord = words[randomNum]
+    return selectedWord
+}
+
+fun obtainGuess(attempt: Int): String
+{
+    println("Attempt $attempt")
+    var userInput = readln()
+    while(!isValid(userInput))
+    {
+        println("Error!!! input word cannot contains number or symbol")
+        println("Attempt $attempt")
+        userInput = readln()
+    }
+    return userInput
+}
+
+fun evaluateGuess(guess: String, target: String): List<Int>
+{
+    guess.uppercase()
+    target.uppercase()
+    val outputResult = mutableListOf(0,0,0,0,0)
+    var character = 0
+    while (character < 5)
+    {
+        if (target.contains(guess.uppercase()[character]))
+        {
+            outputResult[character] = 1
+            if (guess.uppercase()[character] == target[character] )
+            {
+                outputResult[character] = 2
+            }
+        }
+
+        character++
+    }
+    return outputResult
 }
 
 fun displayGuess(guess: String, matches: List<Int>)
