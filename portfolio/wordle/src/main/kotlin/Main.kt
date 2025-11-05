@@ -1,7 +1,7 @@
 fun main()
 {
     val attemptTimes = 10 // How many attempts user have to guess the word
-    val file = "C:\\Users\\User\\IdeaProjects\\Wordle\\src\\words" //the file path of wordle list
+    val file = "/workspaces/comp2850-oop-work/portfolio/wordle/data/words.txt" //the file path of wordle list
     val wordleWordset = readWordList(file) // extract all the available words from words.txt
 
     if (wordleWordset.isEmpty()) // check whether the word set is successfully extracted
