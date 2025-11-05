@@ -31,9 +31,9 @@ fun readWordList(filename: String): MutableList<String>
 
 fun pickRandomWord(words: MutableList<String>): String
 {
-     var Random_num = Random.nextInt(0,words.size)
-     val selected_word = words[Random_num]
-     return selected_word
+    var Random_num = Random.nextInt(0,words.size)
+    val selected_word = words[Random_num]
+    return selected_word
 }
 
 fun obtainGuess(attempt: Int): String
@@ -51,5 +51,29 @@ fun obtainGuess(attempt: Int): String
 
 fun evaluateGuess(guess: String, target: String): List<Int>
 {
-    
+    guess.uppercase()
+    target.uppercase()
+    val output_result = mutableListOf<Int>(0,0,0,0,0)
+    var character = 0
+    while (character < 5)
+    {
+        if (target.contains(guess.uppercase()[character]))
+        {
+            output_result[character] = 1
+            if (guess.uppercase()[character] == target[character] )
+            {
+                output_result[character] = 2
+            }
+        }
+
+        character++
+    }
+    return output_result
+}
+
+fun displayGuess(guess: String, matches: List<Int>)
+{
+    val guessing = guess.uppercase()
+    println("[${guessing[0]}, ${guessing[1]}, ${guessing[2]}, ${guessing[3]}, ${guessing[4]}]")
+    println(matches)
 }
