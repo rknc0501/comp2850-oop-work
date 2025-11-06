@@ -16,4 +16,17 @@ class Circle(val centre: Point, val radius: Double)
      {
         return 2*radius*PI
      }
+
+     fun contain(circle: Circle, point: Point): Boolean
+     {
+       if (circle contains point)
+       {
+         return true
+       }
+       
+       else 
+       {
+         return false
+       }
+     }
 }
