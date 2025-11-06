@@ -28,12 +28,47 @@ class WordleTest : StringSpec({
     // test for pickRandomWord(words: MutableList<String>): String
     "pickRandomWord should return a word that is in a provided list"
     {
-        val wordList = mutableListOf("Great","Goods","hallo")
-        val selectedWord = pickRandomWord(wordList)
-        val containWord = wordList.contains(selectedWord)
+        val wordList = mutableListOf("Great","Goods","hallo") //create a example list
+        val selectedWord = pickRandomWord(wordList) // pick a word in the example list
+        val containWord = wordList.contains(selectedWord) // check if the word can be found in the list
         withClue("The selected word should be found in the provided list")
         {
             containWord shouldBe true
         }
     }
+
+    // test for evaluateGuess(guess: String, target: String): List<Int>
+    "evaluateGuess should return (2,2,2,2,2) if all the characters of user input match the target word"
+    {
+        val guess = "GREAT"
+        val target = "GREAT"
+        val result = evaluateGuess(guess,target)
+        result shouldBe listOf(2,2,2,2,2)
+    }
+
+    "evaluateGuess should return (0,0,0,0,0) if none the characters of user input match the target word"
+    {
+        val guess = "HELLO"
+        val target = "DADDY"
+        val result = evaluateGuess(guess,target)
+        result shouldBe listOf(0,0,0,0,0)
+    }
+
+    "evaluateGuess should return (1,1,1,1,1) if all the characters of user input contains the target word but did not match the position"
+    {
+        val guess = "HEART"
+        val target = "EARTH"
+        val result = evaluateGuess(guess,target)
+        result shouldBe listOf(1,1,1,1,1)
+    }
+
+    "evaluateGuess should return (2,1,2,2,0) if some the characters of user input match the target word"
+    {
+        val guess = "HELLO"
+        val target = "HOLLY"
+        val result = evaluateGuess(guess,target)
+        result shouldBe listOf(2,1,2,2,0)
+    }
+
+
 })
