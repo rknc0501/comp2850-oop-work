@@ -7,7 +7,7 @@ fun main()
     if (wordleWordset.isEmpty()) // check whether the word set is successfully extracted
     {
         println("Word set is empty, cannot start game")
-        return // Exit back to main menu if wordle wordset is empty
+        return // terminate the program if wordle wordset is empty
     }
     else
     {
